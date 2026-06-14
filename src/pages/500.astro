@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  error?: unknown;
+}
+
+const { error } = Astro.props;
+---
+
+<Layout title="Server Error — PetAgeCalc">
+  <Navbar />
+  
+  <main class="relative bg-canvas min-h-[80vh] flex flex-col items-center justify-center text-center overflow-hidden py-32">
+    <!-- Mesh Gradient Backdrop -->
+    <div class="absolute inset-0 mesh-gradient opacity-40 pointer-events-none" aria-hidden="true"></div>
+    
+    <!-- Subtle grid pattern overlay -->
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true"
+      style="background-image: linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px); background-size: 64px 64px;">
+    </div>
+
+    <div class="relative page-container max-w-[600px] mx-auto z-10">
+      <span class="display-xl text-primary block mb-4" style="font-size: 100px; line-height: 1;">500</span>
+      <h1 class="display-md text-ink mb-4">Internal Server Error</h1>
+      
+      <p class="body-lg text-body mb-10">
+        Something went wrong on our end. The server encountered an unexpected condition that prevented it from fulfilling your request.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/"
+          class="flex w-full sm:w-auto items-center justify-center bg-primary text-on-primary button-text-lg rounded-pill px-8 h-12 no-underline transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-level-2"
+        >
+          Return to Home
+        </a>
+        <button
+          onclick="window.location.reload()"
+          class="flex w-full sm:w-auto items-center justify-center bg-canvas text-ink button-text-lg rounded-pill px-8 h-12 no-underline border border-hairline transition-all duration-200 hover:border-hairline-strong hover:shadow-level-2 active:scale-[0.98] cursor-pointer"
+        >
+          Try Again
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
