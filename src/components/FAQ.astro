@@ -1,0 +1,181 @@
+---
+// FAQ — Accordion-style FAQ with Schema.org FAQPage structured data
+const faqs = [
+  {
+    question: "How do you convert dog years to human years?",
+    answer: "The conversion isn't a simple multiplication. A dog's first year equals roughly 15 human years, the second year adds about 9 more (totaling 24), and each subsequent year adds 4-8 human years depending on the dog's size. Small dogs age slower than large and giant breeds after the first two years."
+  },
+  {
+    question: "Is 1 dog year really 7 human years?",
+    answer: "No, the \"7-year rule\" is a myth. It was a rough average that doesn't account for the rapid aging in a dog's first two years or the variation between breeds. A 1-year-old dog is actually closer to a 15-year-old human — they've reached sexual maturity and are nearly fully grown."
+  },
+  {
+    question: "Do small dogs live longer than large dogs?",
+    answer: "Yes, in general. Small and toy breeds often live 14-18 years, while giant breeds may only live 8-10 years. Scientists believe this is because larger dogs age faster — their bodies work harder to maintain a bigger frame, leading to accelerated cellular aging."
+  },
+  {
+    question: "How do you calculate cat years to human years?",
+    answer: "Similar to dogs, a cat's first year equals about 15 human years, and the second year adds approximately 9 more. After that, each additional cat year equals about 4 human years for indoor cats and 5 for outdoor cats, reflecting the impact of environmental stress on aging."
+  },
+  {
+    question: "What life stage is my pet in?",
+    answer: "Pets go through several life stages: Puppy/Kitten (0-1 year), Junior (1-2 years), Adult (2-6 years), Mature (7-10 years), Senior (11-14 years), and Geriatric (15+ years). Each stage has different nutritional, exercise, and veterinary care needs. Our calculator identifies your pet's current stage."
+  },
+  {
+    question: "Do indoor cats age differently than outdoor cats?",
+    answer: "Yes. Indoor cats typically live 15-20 years, while outdoor cats average 12-14 years. Outdoor cats face additional risks like traffic, predators, disease, and weather exposure, which contributes to faster physiological aging. Our calculator accounts for this lifestyle difference."
+  },
+  {
+    question: "How to calculate pet age?",
+    answer: "Use our pet age calculator by inputting their species, current age, and breed size or lifestyle to find their equivalent human age accurately based on AVMA guidelines."
+  },
+  {
+    question: "How old is 7 in dog years?",
+    answer: "A 7-year-old dog is typically 44 to 54 in human years, depending on their size. Small dogs are around 44, while giant breeds are already considered senior citizens at around 59 human years."
+  },
+  {
+    question: "How to know pet age?",
+    answer: "If you don't know your pet's exact birthday, a veterinarian can estimate their age by examining their teeth, coat condition, eyes, and muscle tone."
+  },
+  {
+    question: "How old is 7 in cat years?",
+    answer: "A 7-year-old cat is approximately 44 in human years if they live indoors, or 49 in human years if they are an outdoor cat."
+  },
+  {
+    question: "How old is 12 or 13 in dog years?",
+    answer: "A 12-year-old dog is roughly 64 to 89 human years old, and a 13-year-old dog is about 68 to 99 human years old, depending on their breed size. Giant breeds age much faster than toy breeds."
+  },
+  {
+    question: "How to calculate a dog's age?",
+    answer: "A dog's first year equals about 15 human years, the second adds 9 years, and each subsequent year adds 4-8 years depending on whether they are a small, medium, large, or giant breed."
+  },
+  {
+    question: "How old is a 14 year old dog in dog age?",
+    answer: "A 14-year-old dog is well into their geriatric stage, roughly equivalent to a human between 72 (for toy breeds) and 110+ years old (for large breeds)."
+  },
+  {
+    question: "How do you calculate a cat's age?",
+    answer: "A cat's first year equals 15 human years, their second year equals 9 human years, and every year after that equals about 4 human years for indoor cats and 5 for outdoor cats."
+  },
+  {
+    question: "How can I identify my cat's age?",
+    answer: "Vets estimate a cat's age by checking for tartar on their teeth, cloudiness in the lenses of their eyes, and the stiffness or condition of their coat and joints."
+  },
+  {
+    question: "how much wet food to feed a dog calculator by age?",
+    answer: "Feeding amounts depend on the dog's life stage (puppy, adult, or senior), weight, and activity level. Generally, follow the feeding chart on the wet food label or consult your vet for a precise calorie count."
+  },
+  {
+    question: "how much should i feed my dog calculator by age?",
+    answer: "Puppies require frequent, calorie-dense meals to support growth, while adults need maintenance diets, and seniors need lower-calorie food to prevent obesity. Check dog food packaging for age-specific portions."
+  },
+  {
+    question: "how long should i walk my dog calculator by age?",
+    answer: "Puppies need short 5-10 minute walks to protect growing joints. Adult dogs typically need 30-120 minutes daily depending on the breed, while senior dogs should have shorter, gentle walks to maintain mobility."
+  },
+  {
+    question: "how is dog age calculator?",
+    answer: "Our dog age calculator uses non-linear algorithms based on American Veterinary Medical Association (AVMA) data, taking into account the rapid aging in the first two years and the specific breed size."
+  },
+  {
+    question: "how is dog age calculator in human years?",
+    answer: "The calculation converts chronological dog years into biological human years, giving pet owners a clearer picture of their dog's physiological development and aging process."
+  },
+  {
+    question: "age calculator how old is my dog?",
+    answer: "Simply select 'Dog', input their years and months, and choose their size category (Toy, Small, Medium, Large, Giant) in our calculator above to find out exactly how old your dog is."
+  },
+  {
+    question: "How old is an adult cat?",
+    answer: "A cat is considered a fully grown adult between the ages of 2 and 6 years old, which translates to roughly 24 to 40 in human years."
+  },
+  {
+    question: "How old is an adult dog?",
+    answer: "Dogs generally reach adulthood between 1 and 2 years of age, though giant breeds may not fully mature until 2 years, while small breeds mature faster."
+  },
+  {
+    question: "How old is senior cat?",
+    answer: "A cat is considered 'senior' when they reach 11 to 14 years of age (roughly 60 to 72 human years). After 15 years, they are classified as geriatric."
+  },
+  {
+    question: "how to know my cats age?",
+    answer: "Look at their teeth: kittens lose baby teeth by 6 months, and tartar buildup increases steadily over the years. A veterinarian can provide the most accurate age estimate."
+  },
+  {
+    question: "How to tell a cat's age?",
+    answer: "Besides teeth, older cats often develop lenticular sclerosis (a slight clouding of the eyes), lose muscle mass, and may have a slightly coarser coat compared to younger cats."
+  },
+  {
+    question: "how old is a senior dog?",
+    answer: "The senior stage begins at different ages based on size: roughly 10-11 years for small dogs, 8-9 years for medium dogs, and 6-7 years for large and giant breeds."
+  },
+  {
+    question: "How to calculate pet age in human years?",
+    answer: "Use an age calculator that accounts for species, breed size, and lifestyle, as the old 'multiply by 7' rule is scientifically inaccurate."
+  },
+  {
+    question: "how old is 1 year old dog in human years?",
+    answer: "A 1-year-old dog is approximately 15 in human years, as they have already reached physical and sexual maturity."
+  },
+  {
+    question: "how to tell a dog's age in human years?",
+    answer: "You can tell a dog's age in human years by calculating 15 years for the first year, 9 for the second, and adding 4-8 years for each subsequent year depending on their breed size."
+  }
+];
+---
+
+<section id="faq" class="bg-canvas py-20 md:py-28">
+  <div class="page-container max-w-[48rem]">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <span class="caption-mono text-mute block mb-3">FAQ</span>
+      <h2 class="display-lg display-lg-responsive text-ink">Frequently asked questions.</h2>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="flex flex-col gap-0 border border-hairline rounded-lg overflow-hidden shadow-level-2">
+      {faqs.map((faq, index) => (
+        <details
+          class:list={[
+            "group",
+            index < faqs.length - 1 && "border-b border-hairline"
+          ]}
+          id={`faq-${index}`}
+        >
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none body-sm-strong text-ink hover:bg-canvas-soft transition-colors select-none [&::-webkit-details-marker]:hidden">
+            <span>{faq.question}</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              class="shrink-0 text-mute transition-transform duration-200 group-open:rotate-45"
+            >
+              <line x1="8" y1="3" x2="8" y2="13" />
+              <line x1="3" y1="8" x2="13" y2="8" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-5">
+            <p class="body-sm text-body">{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- FAQPage Schema.org structured data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+})} />

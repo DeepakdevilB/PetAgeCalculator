@@ -1,0 +1,69 @@
+---
+// Footer — Vercel-style 4-column footer
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-canvas border-t border-hairline py-16 md:py-20">
+  <div class="page-container">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12">
+      <!-- Column 1: Calculator -->
+      <div>
+        <h4 class="caption-mono text-mute mb-4">Calculator</h4>
+        <ul class="flex flex-col gap-2.5 list-none p-0 m-0">
+          <li><a href="#calculator" class="body-sm text-body hover:text-ink transition-colors no-underline">Dog Calculator</a></li>
+          <li><a href="#calculator" class="body-sm text-body hover:text-ink transition-colors no-underline">Cat Calculator</a></li>
+          <li><a href="#age-chart" class="body-sm text-body hover:text-ink transition-colors no-underline">Age Chart</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 2: Learn -->
+      <div>
+        <h4 class="caption-mono text-mute mb-4">Learn</h4>
+        <ul class="flex flex-col gap-2.5 list-none p-0 m-0">
+          <li><a href="#how-it-works" class="body-sm text-body hover:text-ink transition-colors no-underline">How It Works</a></li>
+          <li><a href="#faq" class="body-sm text-body hover:text-ink transition-colors no-underline">FAQ</a></li>
+          <li><a href="#how-it-works" class="body-sm text-body hover:text-ink transition-colors no-underline">Pet Life Stages</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Resources -->
+      <div>
+        <h4 class="caption-mono text-mute mb-4">Resources</h4>
+        <ul class="flex flex-col gap-2.5 list-none p-0 m-0">
+          <li><a href="https://www.avma.org" target="_blank" rel="noopener noreferrer" class="body-sm text-body hover:text-ink transition-colors no-underline">AVMA Guidelines</a></li>
+          <li><a href="https://www.akc.org" target="_blank" rel="noopener noreferrer" class="body-sm text-body hover:text-ink transition-colors no-underline">AKC Research</a></li>
+          <li><a href="https://icatcare.org" target="_blank" rel="noopener noreferrer" class="body-sm text-body hover:text-ink transition-colors no-underline">iCatCare</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: About -->
+      <div>
+        <h4 class="caption-mono text-mute mb-4">About</h4>
+        <ul class="flex flex-col gap-2.5 list-none p-0 m-0">
+          <li><a href="#hero" class="body-sm text-body hover:text-ink transition-colors no-underline">About Us</a></li>
+          <li><a href="mailto:hello@petagecalc.com" class="body-sm text-body hover:text-ink transition-colors no-underline">Contact</a></li>
+          <li><a href="#" class="body-sm text-body hover:text-ink transition-colors no-underline">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-hairline pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <svg width="18" height="18" viewBox="0 0 32 32" fill="var(--color-ink)" class="shrink-0">
+          <ellipse cx="10" cy="8" rx="3.5" ry="4.5" />
+          <ellipse cx="22" cy="8" rx="3.5" ry="4.5" />
+          <ellipse cx="5" cy="16" rx="2.5" ry="3.5" transform="rotate(-20 5 16)" />
+          <ellipse cx="27" cy="16" rx="2.5" ry="3.5" transform="rotate(20 27 16)" />
+          <ellipse cx="16" cy="20" rx="7" ry="6" />
+        </svg>
+        <span class="caption-text text-mute">
+          © {currentYear} PetAgeCalc. Made with ❤️ for pet lovers.
+        </span>
+      </div>
+      <p class="caption-text text-mute">
+        Not a substitute for veterinary advice.
+      </p>
+    </div>
+  </div>
+</footer>

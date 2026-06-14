@@ -1,0 +1,123 @@
+---
+// AgeTable — Interactive age comparison chart with tabs for Dog/Cat
+---
+
+<section id="age-chart" class="bg-canvas-soft py-20 md:py-28">
+  <div class="page-container">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <span class="caption-mono text-mute block mb-3">Age Comparison Chart</span>
+      <h2 class="display-lg display-lg-responsive text-ink">Your pet's age at a glance.</h2>
+      <p class="body-lg text-body mt-3 max-w-[480px] mx-auto">
+        Quick reference for converting pet years to human years.
+      </p>
+    </div>
+
+    <!-- Tab Switcher -->
+    <div class="flex justify-center mb-8">
+      <div class="flex bg-canvas-soft-2 rounded-pill-sm p-1 gap-1" role="tablist">
+        <button
+          role="tab"
+          id="chart-tab-dog"
+          aria-selected="true"
+          class="chart-tab body-sm-strong rounded-pill-sm px-6 h-9 transition-all duration-200 bg-canvas text-ink shadow-level-1"
+          data-chart="dog"
+        >
+          🐕 Dogs
+        </button>
+        <button
+          role="tab"
+          id="chart-tab-cat"
+          aria-selected="false"
+          class="chart-tab body-sm-strong rounded-pill-sm px-6 h-9 transition-all duration-200 text-body hover:text-ink"
+          data-chart="cat"
+        >
+          🐈 Cats
+        </button>
+      </div>
+    </div>
+
+    <!-- Dog Table -->
+    <div id="chart-dog" class="max-w-[56rem] mx-auto bg-canvas rounded-lg shadow-level-3 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="bg-canvas-soft">
+              <th class="caption-mono text-mute text-left px-4 py-3 border-b border-hairline">Pet Age</th>
+              <th class="caption-mono text-mute text-center px-4 py-3 border-b border-hairline">Toy</th>
+              <th class="caption-mono text-mute text-center px-4 py-3 border-b border-hairline">Small</th>
+              <th class="caption-mono text-mute text-center px-4 py-3 border-b border-hairline">Medium</th>
+              <th class="caption-mono text-mute text-center px-4 py-3 border-b border-hairline">Large</th>
+              <th class="caption-mono text-mute text-center px-4 py-3 border-b border-hairline">Giant</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3 border-b border-hairline">1 year</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">15</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">15</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">15</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">12</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">12</td></tr>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3 border-b border-hairline">2 years</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">24</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">24</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">24</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">19</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">19</td></tr>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3 border-b border-hairline">3 years</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">28</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">28</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">29</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">26</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">27</td></tr>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3 border-b border-hairline">5 years</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">36</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">36</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">39</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">40</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">43</td></tr>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3 border-b border-hairline">7 years</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">44</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">44</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">49</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">54</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">59</td></tr>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3 border-b border-hairline">10 years</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">56</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">56</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">64</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">75</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">83</td></tr>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3 border-b border-hairline">12 years</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">64</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">64</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">74</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">89</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">99</td></tr>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3">15 years</td><td class="body-sm text-body text-center px-4 py-3">76</td><td class="body-sm text-body text-center px-4 py-3">76</td><td class="body-sm text-body text-center px-4 py-3">89</td><td class="body-sm text-body text-center px-4 py-3">110</td><td class="body-sm text-body text-center px-4 py-3">123</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="px-4 py-3 border-t border-hairline bg-canvas-soft">
+        <p class="caption-text text-mute">Human years equivalent. Based on AVMA and AKC veterinary research data.</p>
+      </div>
+    </div>
+
+    <!-- Cat Table -->
+    <div id="chart-cat" class="max-w-[42rem] mx-auto bg-canvas rounded-lg shadow-level-3 overflow-hidden hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="bg-canvas-soft">
+              <th class="caption-mono text-mute text-left px-4 py-3 border-b border-hairline">Cat Age</th>
+              <th class="caption-mono text-mute text-center px-4 py-3 border-b border-hairline">Indoor</th>
+              <th class="caption-mono text-mute text-center px-4 py-3 border-b border-hairline">Outdoor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3 border-b border-hairline">1 year</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">15</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">15</td></tr>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3 border-b border-hairline">2 years</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">24</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">24</td></tr>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3 border-b border-hairline">3 years</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">28</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">29</td></tr>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3 border-b border-hairline">5 years</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">36</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">39</td></tr>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3 border-b border-hairline">7 years</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">44</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">49</td></tr>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3 border-b border-hairline">10 years</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">56</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">64</td></tr>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3 border-b border-hairline">15 years</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">76</td><td class="body-sm text-body text-center px-4 py-3 border-b border-hairline">89</td></tr>
+            <tr class="hover:bg-canvas-soft transition-colors"><td class="body-sm-strong text-ink px-4 py-3">20 years</td><td class="body-sm text-body text-center px-4 py-3">96</td><td class="body-sm text-body text-center px-4 py-3">114</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="px-4 py-3 border-t border-hairline bg-canvas-soft">
+        <p class="caption-text text-mute">Human years equivalent. Indoor cats typically live longer due to reduced environmental risks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const chartTabs = document.querySelectorAll('.chart-tab') as NodeListOf<HTMLButtonElement>;
+  const chartDog = document.getElementById('chart-dog')!;
+  const chartCat = document.getElementById('chart-cat')!;
+
+  chartTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const chart = tab.dataset.chart;
+      chartTabs.forEach(t => {
+        const isActive = t === tab;
+        t.setAttribute('aria-selected', String(isActive));
+        t.className = t.className
+          .replace(/bg-canvas text-ink shadow-level-1|text-body hover:text-ink/g, '')
+          .trim();
+        t.classList.add(...(isActive
+          ? ['bg-canvas', 'text-ink', 'shadow-level-1']
+          : ['text-body', 'hover:text-ink']));
+      });
+      chartDog.classList.toggle('hidden', chart !== 'dog');
+      chartCat.classList.toggle('hidden', chart !== 'cat');
+    });
+  });
+</script>

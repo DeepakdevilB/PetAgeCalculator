@@ -1,0 +1,94 @@
+---
+// Navbar — Sticky top navigation, Vercel style
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-canvas/80 backdrop-blur-lg border-b border-hairline">
+  <div class="page-container-wide flex items-center justify-between h-16">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 no-underline" id="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 32 32" fill="var(--color-ink)" class="shrink-0">
+        <ellipse cx="10" cy="8" rx="3.5" ry="4.5" />
+        <ellipse cx="22" cy="8" rx="3.5" ry="4.5" />
+        <ellipse cx="5" cy="16" rx="2.5" ry="3.5" transform="rotate(-20 5 16)" />
+        <ellipse cx="27" cy="16" rx="2.5" ry="3.5" transform="rotate(20 27 16)" />
+        <ellipse cx="16" cy="20" rx="7" ry="6" />
+      </svg>
+      <span class="body-sm-strong text-ink">PetAgeCalc</span>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <div class="hidden md:flex items-center gap-1" id="nav-links-desktop">
+      <a href="#calculator" class="body-sm text-body hover:text-ink px-3 py-1.5 rounded-full transition-colors duration-200 no-underline">Calculator</a>
+      <a href="#how-it-works" class="body-sm text-body hover:text-ink px-3 py-1.5 rounded-full transition-colors duration-200 no-underline">How It Works</a>
+      <a href="#age-chart" class="body-sm text-body hover:text-ink px-3 py-1.5 rounded-full transition-colors duration-200 no-underline">Age Chart</a>
+      <a href="#faq" class="body-sm text-body hover:text-ink px-3 py-1.5 rounded-full transition-colors duration-200 no-underline">FAQ</a>
+    </div>
+
+    <!-- CTA + Mobile Toggle -->
+    <div class="flex items-center gap-3">
+      <ThemeToggle />
+
+      <a
+        href="#calculator"
+        class="hidden sm:inline-flex items-center bg-primary text-on-primary body-sm-strong rounded-sm px-3 h-7 no-underline transition-opacity hover:opacity-90"
+        id="nav-cta"
+      >
+        Calculate Now
+      </a>
+
+      <!-- Mobile Hamburger -->
+      <button
+        id="mobile-menu-toggle"
+        class="md:hidden flex items-center justify-center w-10 h-10 rounded-sm border border-hairline bg-canvas text-ink"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg id="menu-icon-open" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="2" y1="4" x2="14" y2="4" />
+          <line x1="2" y1="8" x2="14" y2="8" />
+          <line x1="2" y1="12" x2="14" y2="12" />
+        </svg>
+        <svg id="menu-icon-close" class="hidden" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="3" y1="3" x2="13" y2="13" />
+          <line x1="13" y1="3" x2="3" y2="13" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-hairline bg-canvas">
+    <div class="page-container-wide py-4 flex flex-col gap-1">
+      <a href="#calculator" class="body-sm text-body hover:text-ink py-2 px-3 rounded-md transition-colors no-underline">Calculator</a>
+      <a href="#how-it-works" class="body-sm text-body hover:text-ink py-2 px-3 rounded-md transition-colors no-underline">How It Works</a>
+      <a href="#age-chart" class="body-sm text-body hover:text-ink py-2 px-3 rounded-md transition-colors no-underline">Age Chart</a>
+      <a href="#faq" class="body-sm text-body hover:text-ink py-2 px-3 rounded-md transition-colors no-underline">FAQ</a>
+      <a href="#calculator" class="mt-2 flex items-center justify-center bg-primary text-on-primary body-sm-strong rounded-sm px-3 h-9 no-underline">Calculate Now</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    iconOpen?.classList.toggle('hidden', isOpen);
+    iconClose?.classList.toggle('hidden', !isOpen);
+  });
+
+  // Close mobile menu when clicking a link
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+    });
+  });
+</script>

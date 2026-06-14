@@ -1,0 +1,59 @@
+---
+// Hero — Vercel-style mesh gradient hero section
+---
+
+<section id="hero" class="relative overflow-hidden bg-canvas pt-16">
+  <!-- Mesh Gradient Backdrop -->
+  <div class="absolute inset-0 mesh-gradient opacity-60 pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Subtle grid pattern overlay -->
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true"
+    style="background-image: linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px); background-size: 64px 64px;">
+  </div>
+
+  <div class="relative page-container flex flex-col items-center text-center py-20 md:py-28 lg:py-36">
+    <!-- Announcement Badge -->
+    <a href="#calculator" class="inline-flex items-center gap-2 bg-canvas-soft-2 text-body body-sm rounded-full px-4 py-1.5 mb-8 no-underline shadow-level-1 hover:bg-hairline transition-colors duration-200 group">
+      <span class="text-base">🐾</span>
+      <span>Free & instant — no sign-up required</span>
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" class="transition-transform group-hover:translate-x-0.5">
+        <path d="M6 4l4 4-4 4" />
+      </svg>
+    </a>
+
+    <!-- Headline -->
+    <h1 class="display-xl display-xl-responsive max-w-[800px] text-ink mb-4">
+      How old is your pet in human years.
+    </h1>
+
+    <!-- Sub-headline -->
+    <p class="body-lg text-body max-w-[560px] mb-10">
+      Discover your dog or cat's true age with our scientifically accurate, breed-aware calculator.
+    </p>
+
+    <!-- CTA Row -->
+    <div class="flex flex-col sm:flex-row items-center gap-4 w-full max-w-[400px] sm:max-w-none mx-auto">
+      <a
+        href="#calculator"
+        class="flex w-full sm:w-auto items-center justify-center bg-primary text-on-primary button-text-lg rounded-pill px-8 h-12 no-underline transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-level-2"
+        id="hero-cta-primary"
+      >
+        Calculate now
+      </a>
+      <a
+        href="#how-it-works"
+        class="flex w-full sm:w-auto items-center justify-center bg-canvas text-ink button-text-lg rounded-pill px-8 h-12 no-underline border border-hairline transition-all duration-200 hover:border-hairline-strong hover:shadow-level-2 active:scale-[0.98]"
+        id="hero-cta-secondary"
+      >
+        Learn more
+      </a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="mt-16 md:mt-24 animate-bounce opacity-40">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="text-body">
+        <path d="M10 4v12M5 11l5 5 5-5" />
+      </svg>
+    </div>
+  </div>
+</section>
