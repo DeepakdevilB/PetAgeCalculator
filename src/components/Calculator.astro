@@ -82,19 +82,51 @@
           <p class="caption-text text-mute mt-2">Not sure? Give your best guess!</p>
         </div>
 
-        <!-- Dog Size (shown for dogs) -->
+        <!-- Dog Breed / Size (shown for dogs) -->
         <div id="dog-size-group" class="mb-8">
-          <label class="body-sm-strong text-ink block mb-3">Dog size</label>
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2" id="dog-size-options">
-            <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all" data-size="toy">Toy</button>
-            <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all active" data-size="small">Small</button>
-            <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all" data-size="medium">Medium</button>
-            <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all" data-size="large">Large</button>
-            <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all col-span-2 sm:col-span-1" data-size="giant">Giant</button>
+          <label for="breed-search" class="body-sm-strong text-ink block mb-3">Dog breed</label>
+          
+          <!-- Breed Search Combobox -->
+          <div class="relative mb-4" id="breed-selector-group">
+            <div class="relative">
+              <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-mute pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input
+                type="text"
+                id="breed-search"
+                placeholder="Search breeds (e.g. Golden Retriever)..."
+                class="w-full h-12 bg-canvas border border-hairline rounded-sm pl-10 pr-10 body-sm text-ink outline-none focus:border-link focus:ring-1 focus:ring-link transition-all"
+                autocomplete="off"
+              />
+              <!-- Clear button -->
+              <button id="breed-clear" class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-mute hover:text-ink hidden cursor-pointer" aria-label="Clear breed">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <!-- Dropdown List -->
+            <ul id="breed-dropdown" class="absolute z-20 w-full mt-1 max-h-60 overflow-y-auto bg-canvas border border-hairline rounded-md shadow-level-3 hidden">
+              <!-- Populated by JS -->
+            </ul>
           </div>
-          <p class="caption-text text-mute mt-2">
-            <span class="font-medium">Toy:</span> &lt;10 lbs · <span class="font-medium">Small:</span> 10-25 lbs · <span class="font-medium">Medium:</span> 25-50 lbs · <span class="font-medium">Large:</span> 50-100 lbs · <span class="font-medium">Giant:</span> 100+ lbs
-          </p>
+
+          <!-- Fallback Size Selection (Hidden initially unless Mixed/Unknown is selected, but for UX, let's keep it visible until they type a breed) -->
+          <div id="dog-size-fallback" class="animate-fade-in">
+            <label class="body-sm-strong text-ink block mb-3">Estimated adult size</label>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-2" id="dog-size-options">
+              <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all" data-size="toy">Toy</button>
+              <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all active" data-size="small">Small</button>
+              <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all" data-size="medium">Medium</button>
+              <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all" data-size="large">Large</button>
+              <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all col-span-2 sm:col-span-1" data-size="giant">Giant</button>
+            </div>
+            <p class="caption-text text-mute mt-2">
+              <span class="font-medium">Toy:</span> &lt;10 lbs · <span class="font-medium">Small:</span> 10-25 lbs · <span class="font-medium">Medium:</span> 25-50 lbs · <span class="font-medium">Large:</span> 50-100 lbs · <span class="font-medium">Giant:</span> 100+ lbs
+            </p>
+          </div>
         </div>
 
         <!-- Cat Type (shown for cats, hidden by default) -->
@@ -201,6 +233,111 @@
     giant:  { yearOne: 12, yearTwo: 7, after: 8, maxAge: 10 },
   };
 
+  const BREEDS = [
+    { name: "Mixed Breed", size: "mixed" },
+    { name: "Don't know", size: "mixed" },
+    { name: "Afghan Hound", size: "large" },
+    { name: "Airedale Terrier", size: "large" },
+    { name: "Akita", size: "large" },
+    { name: "Alaskan Malamute", size: "large" },
+    { name: "American Bulldog", size: "large" },
+    { name: "American Eskimo Dog", size: "medium" },
+    { name: "American Pit Bull Terrier", size: "large" },
+    { name: "American Staffordshire Terrier", size: "medium" },
+    { name: "Anatolian Shepherd", size: "giant" },
+    { name: "Australian Cattle Dog", size: "medium" },
+    { name: "Australian Shepherd", size: "medium" },
+    { name: "Basset Hound", size: "medium" },
+    { name: "Beagle", size: "medium" },
+    { name: "Belgian Malinois", size: "large" },
+    { name: "Bernese Mountain Dog", size: "large" },
+    { name: "Bichon Frise", size: "small" },
+    { name: "Bloodhound", size: "large" },
+    { name: "Border Collie", size: "medium" },
+    { name: "Border Terrier", size: "small" },
+    { name: "Boston Terrier", size: "small" },
+    { name: "Boxer", size: "large" },
+    { name: "Boykin Spaniel", size: "medium" },
+    { name: "Brittany", size: "medium" },
+    { name: "Brussels Griffon", size: "toy" },
+    { name: "Bull Terrier", size: "medium" },
+    { name: "Bulldog", size: "medium" },
+    { name: "Bullmastiff", size: "giant" },
+    { name: "Cairn Terrier", size: "small" },
+    { name: "Cane Corso", size: "giant" },
+    { name: "Cardigan Welsh Corgi", size: "medium" },
+    { name: "Cavalier King Charles Spaniel", size: "small" },
+    { name: "Chesapeake Bay Retriever", size: "large" },
+    { name: "Chihuahua", size: "toy" },
+    { name: "Chinese Crested", size: "toy" },
+    { name: "Chinese Shar-Pei", size: "medium" },
+    { name: "Chow Chow", size: "medium" },
+    { name: "Cocker Spaniel", size: "medium" },
+    { name: "Collie", size: "large" },
+    { name: "Coton de Tulear", size: "small" },
+    { name: "Dachshund", size: "small" },
+    { name: "Dalmatian", size: "large" },
+    { name: "Doberman Pinscher", size: "large" },
+    { name: "Dogo Argentino", size: "large" },
+    { name: "English Cocker Spaniel", size: "medium" },
+    { name: "English Setter", size: "large" },
+    { name: "English Springer Spaniel", size: "medium" },
+    { name: "French Bulldog", size: "small" },
+    { name: "German Shepherd", size: "large" },
+    { name: "German Shorthaired Pointer", size: "large" },
+    { name: "Giant Schnauzer", size: "large" },
+    { name: "Golden Retriever", size: "large" },
+    { name: "Gordon Setter", size: "large" },
+    { name: "Great Dane", size: "giant" },
+    { name: "Great Pyrenees", size: "giant" },
+    { name: "Greyhound", size: "large" },
+    { name: "Havanese", size: "small" },
+    { name: "Irish Setter", size: "large" },
+    { name: "Irish Wolfhound", size: "giant" },
+    { name: "Italian Greyhound", size: "toy" },
+    { name: "Jack Russell Terrier", size: "small" },
+    { name: "Japanese Chin", size: "toy" },
+    { name: "Keeshond", size: "medium" },
+    { name: "Labrador Retriever", size: "large" },
+    { name: "Lhasa Apso", size: "small" },
+    { name: "Maltese", size: "toy" },
+    { name: "Mastiff", size: "giant" },
+    { name: "Miniature Pinscher", size: "toy" },
+    { name: "Miniature Poodle", size: "small" },
+    { name: "Miniature Schnauzer", size: "small" },
+    { name: "Newfoundland", size: "giant" },
+    { name: "Papillon", size: "toy" },
+    { name: "Pekingese", size: "toy" },
+    { name: "Pembroke Welsh Corgi", size: "medium" },
+    { name: "Pit Bull Terrier", size: "large" },
+    { name: "Pointer", size: "large" },
+    { name: "Pomeranian", size: "toy" },
+    { name: "Pug", size: "small" },
+    { name: "Rat Terrier", size: "small" },
+    { name: "Rhodesian Ridgeback", size: "large" },
+    { name: "Rottweiler", size: "large" },
+    { name: "Saint Bernard", size: "giant" },
+    { name: "Samoyed", size: "large" },
+    { name: "Scottish Terrier", size: "small" },
+    { name: "Shetland Sheepdog", size: "small" },
+    { name: "Shiba Inu", size: "medium" },
+    { name: "Shih Tzu", size: "small" },
+    { name: "Siberian Husky", size: "large" },
+    { name: "Silky Terrier", size: "toy" },
+    { name: "Soft Coated Wheaten Terrier", size: "medium" },
+    { name: "Staffordshire Bull Terrier", size: "medium" },
+    { name: "Standard Poodle", size: "large" },
+    { name: "Standard Schnauzer", size: "medium" },
+    { name: "Tibetan Terrier", size: "medium" },
+    { name: "Toy Poodle", size: "toy" },
+    { name: "Vizsla", size: "large" },
+    { name: "Weimaraner", size: "large" },
+    { name: "West Highland White Terrier", size: "small" },
+    { name: "Whippet", size: "medium" },
+    { name: "Wirehaired Pointing Griffon", size: "large" },
+    { name: "Yorkshire Terrier", size: "toy" }
+  ];
+
   const CAT_COEFFICIENTS = {
     indoor:  { yearOne: 15, yearTwo: 9, after: 4, maxAge: 20 },
     outdoor: { yearOne: 15, yearTwo: 9, after: 5, maxAge: 16 },
@@ -296,6 +433,81 @@
       yearsInput.max = currentPet === 'dog' ? '25' : '30';
     });
   });
+
+  // ─── Breed Selector Logic ───
+  const breedSearch = document.getElementById('breed-search') as HTMLInputElement;
+  const breedDropdown = document.getElementById('breed-dropdown')!;
+  const breedClear = document.getElementById('breed-clear')!;
+  const dogSizeFallback = document.getElementById('dog-size-fallback')!;
+
+  function renderBreeds(filter = '') {
+    const q = filter.toLowerCase();
+    const filtered = BREEDS.filter(b => b.name.toLowerCase().includes(q));
+    
+    if (filtered.length === 0) {
+      breedDropdown.innerHTML = `<li class="p-3 text-mute body-sm">No breeds found. Try "Mixed Breed"</li>`;
+      return;
+    }
+    
+    breedDropdown.innerHTML = filtered.map(b => 
+      `<li class="p-3 body-sm text-ink hover:bg-canvas-soft cursor-pointer transition-colors" data-name="${b.name}" data-size="${b.size}">${b.name}</li>`
+    ).join('');
+    
+    // Attach clicks to new list items
+    breedDropdown.querySelectorAll('li[data-name]').forEach(li => {
+      li.addEventListener('click', () => {
+        const name = (li as HTMLElement).dataset.name!;
+        const size = (li as HTMLElement).dataset.size!;
+        breedSearch.value = name;
+        breedDropdown.classList.add('hidden');
+        breedClear.classList.remove('hidden');
+        
+        if (size === 'mixed') {
+          // Reveal fallback size options
+          dogSizeFallback.classList.remove('hidden');
+          // Select default small
+          const defaultBtn = document.querySelector('.size-btn[data-size="small"]') as HTMLButtonElement;
+          defaultBtn?.click();
+        } else {
+          // Hide fallback size options and set the size silently
+          dogSizeFallback.classList.add('hidden');
+          const targetBtn = document.querySelector(`.size-btn[data-size="${size}"]`) as HTMLButtonElement;
+          targetBtn?.click();
+        }
+      });
+    });
+  }
+
+  if (breedSearch) {
+    breedSearch.addEventListener('focus', () => {
+      breedDropdown.classList.remove('hidden');
+      renderBreeds(breedSearch.value);
+    });
+
+    breedSearch.addEventListener('input', (e) => {
+      const val = (e.target as HTMLInputElement).value;
+      breedClear.classList.toggle('hidden', val.length === 0);
+      breedDropdown.classList.remove('hidden');
+      renderBreeds(val);
+    });
+
+    breedClear.addEventListener('click', () => {
+      breedSearch.value = '';
+      breedClear.classList.add('hidden');
+      breedDropdown.classList.add('hidden');
+      // Default back to showing size options and "small"
+      dogSizeFallback.classList.remove('hidden');
+      const defaultBtn = document.querySelector('.size-btn[data-size="small"]') as HTMLButtonElement;
+      defaultBtn?.click();
+      breedSearch.focus();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!document.getElementById('breed-selector-group')?.contains(e.target as Node)) {
+        breedDropdown.classList.add('hidden');
+      }
+    });
+  }
 
   // ─── Dog Size Selection ───
   sizeBtns.forEach(btn => {
