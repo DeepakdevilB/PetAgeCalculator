@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Privacy Policy — Pet Age Calculator">
+  <Navbar />
+  
+  <main class="bg-canvas min-h-screen pt-32 pb-20">
+    <div class="page-container max-w-[800px] mx-auto">
+      <h1 class="display-xl text-ink mb-6">Privacy Policy</h1>
+      <p class="caption-text text-mute mb-8">Last Updated: {new Date().toLocaleDateString()}</p>
+      
+      <div class="flex flex-col gap-6 body-lg text-body">
+        <p>
+          At PetAgeCalc ("we," "us," or "our"), we respect your privacy and are committed to protecting it. This Privacy Policy explains our practices regarding the collection, use, and disclosure of information when you use our website (the "Service").
+        </p>
+
+        <h2 class="display-sm text-ink mt-6 mb-2">1. Information We Do Not Collect</h2>
+        <p>
+          Our Pet Age Calculator is designed to be used without requiring you to provide any personal information. 
+        </p>
+        <ul class="list-disc pl-6 flex flex-col gap-2">
+          <li>We <strong>do not</strong> require you to create an account.</li>
+          <li>We <strong>do not</strong> ask for your name, email address, or phone number to use the calculator.</li>
+          <li>We <strong>do not</strong> store the data (pet age, breed size) you input into the calculator on our servers. All calculations are performed instantly in your browser.</li>
+        </ul>
+
+        <h2 class="display-sm text-ink mt-6 mb-2">2. Automatically Collected Information</h2>
+        <p>
+          Like most standard websites, we may automatically collect certain non-personally identifiable information when you visit, such as:
+        </p>
+        <ul class="list-disc pl-6 flex flex-col gap-2">
+          <li>Browser type and version</li>
+          <li>Device type (mobile or desktop)</li>
+          <li>Operating system</li>
+          <li>Time and date of your visit</li>
+        </ul>
+        <p>
+          This data is used solely for analytics purposes to help us understand how visitors use our site and to improve the user experience.
+        </p>
+
+        <h2 class="display-sm text-ink mt-6 mb-2">3. Cookies and Local Storage</h2>
+        <p>
+          We use local storage within your browser to save your preference for "Dark Mode" or "Light Mode". This ensures the site remains in your preferred theme when you navigate between pages. This data never leaves your device.
+        </p>
+        <p>
+          We may use third-party analytics tools (like Google Analytics) which may utilize cookies to track aggregate usage behavior. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.
+        </p>
+
+        <h2 class="display-sm text-ink mt-6 mb-2">4. Third-Party Links</h2>
+        <p>
+          Our Service may contain links to third-party websites (such as veterinary resources). If you click on a third-party link, you will be directed to that site. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
+        </p>
+
+        <h2 class="display-sm text-ink mt-6 mb-2">5. Changes to This Privacy Policy</h2>
+        <p>
+          We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.
+        </p>
+
+        <h2 class="display-sm text-ink mt-6 mb-2">6. Contact Us</h2>
+        <p>
+          If you have any questions about this Privacy Policy, please contact us at <a href="mailto:agencybyds@gmail.com" class="text-link hover:underline">agencybyds@gmail.com</a>.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

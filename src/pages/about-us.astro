@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="About Us — Pet Age Calculator">
+  <Navbar />
+  
+  <main class="bg-canvas min-h-screen pt-32 pb-20">
+    <div class="page-container max-w-[800px] mx-auto">
+      <h1 class="display-xl text-ink mb-6">About Us</h1>
+      
+      <div class="flex flex-col gap-6 body-lg text-body">
+        <p>
+          Welcome to <strong>PetAgeCalc</strong>! We are a dedicated team of pet lovers, data enthusiasts, and veterinary advocates on a mission to help pet parents better understand their furry companions.
+        </p>
+
+        <h2 class="display-sm text-ink mt-8 mb-4">Our Mission</h2>
+        <p>
+          For decades, the standard "multiply by seven" rule was the only way people calculated their pet's age. But as veterinary science advanced, it became clear that this rule was fundamentally flawed. A 1-year-old dog isn't a 7-year-old human child—they are a fully grown teenager! 
+        </p>
+        <p>
+          Our mission is to replace outdated myths with scientifically accurate data. By providing a free, easy-to-use, and highly accurate Pet Age Calculator, we aim to empower pet owners to make informed decisions about their pets' nutrition, exercise, and veterinary care.
+        </p>
+
+        <h2 class="display-sm text-ink mt-8 mb-4">How We Calculate Age</h2>
+        <p>
+          We built our algorithms based on the latest guidelines and research from leading veterinary organizations, including the American Veterinary Medical Association (AVMA) and the American Kennel Club (AKC). 
+        </p>
+        <p>
+          Our tool takes into account crucial factors like species, breed size, and lifestyle (such as indoor vs. outdoor environments for cats) to ensure you get the most precise biological age equivalent possible.
+        </p>
+
+        <h2 class="display-sm text-ink mt-8 mb-4">Our Commitment</h2>
+        <p>
+          We believe that understanding your pet's life stage is the first step to providing them with a long, healthy, and happy life. We are committed to keeping this tool completely free and regularly updated with the latest veterinary science.
+        </p>
+        <p>
+          Thank you for using PetAgeCalc and for being a wonderful pet parent!
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
