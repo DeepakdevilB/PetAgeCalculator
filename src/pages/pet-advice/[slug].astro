@@ -1,0 +1,113 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout 
+  title={`${post.data.title} - PetAgeCalc Advice`}
+  description={post.data.description}
+>
+  <Navbar />
+
+  <main class="pt-32 pb-20 min-h-screen bg-canvas">
+    <article class="max-w-[48rem] mx-auto px-4 sm:px-6">
+      
+      <!-- Article Header -->
+      <header class="mb-12 text-center">
+        <div class="flex items-center justify-center gap-2 mb-6">
+          {post.data.tags.map((tag: string) => (
+            <span class="caption-mono bg-canvas-soft-2 text-ink px-2 py-1 rounded-sm">{tag}</span>
+          ))}
+        </div>
+        <h1 class="display-lg display-lg-responsive text-ink mb-6">{post.data.title}</h1>
+        <p class="text-lg text-mute mb-8">{post.data.description}</p>
+        
+        <div class="flex items-center justify-center gap-4 pt-6 border-t border-hairline max-w-sm mx-auto">
+          <div class="flex flex-col text-center">
+            <span class="body-sm-strong text-ink">{post.data.author}</span>
+            <span class="caption-text text-mute">{post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Markdown Content -->
+      <div class="prose prose-invert max-w-none text-body">
+        <Content />
+      </div>
+
+      <!-- CTA Box -->
+      <div class="mt-16 bg-canvas-soft border border-hairline rounded-lg p-8 text-center shadow-level-2">
+        <h3 class="text-xl font-semibold text-ink mb-3">Ready to find out your pet's exact age?</h3>
+        <p class="body-md text-mute mb-6">Stop guessing with the "multiply by 7" rule. Use our free, scientifically-backed calculator.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/dog-age-calculator" class="bg-primary text-on-primary text-base font-semibold px-6 py-3 rounded-pill hover:opacity-90 transition-opacity no-underline">Calculate Dog Age</a>
+          <a href="/cat-age-calculator" class="bg-canvas-soft-2 text-ink border border-hairline text-base font-semibold px-6 py-3 rounded-pill hover:bg-canvas-soft transition-colors no-underline">Calculate Cat Age</a>
+        </div>
+      </div>
+
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  /* Basic Prose Styling for Markdown */
+  .prose h2 {
+    color: var(--color-ink);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .prose h3 {
+    color: var(--color-ink);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose p {
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+    font-size: 1.05rem;
+  }
+  .prose ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+  }
+  .prose li {
+    margin-bottom: 0.5rem;
+  }
+  .prose a {
+    color: var(--color-link);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .prose a:hover {
+    text-decoration: underline;
+  }
+  .prose strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+  .prose em {
+    font-style: italic;
+  }
+</style>

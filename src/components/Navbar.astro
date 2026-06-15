@@ -4,7 +4,7 @@ import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-canvas/80 backdrop-blur-lg border-b border-hairline">
-  <div class="page-container-wide flex items-center justify-between h-16">
+  <div class="max-w-[80rem] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 w-full">
     <!-- Logo -->
     <a href="/" class="flex items-center gap-2.5 no-underline group" id="nav-logo">
       <img src="/favicon.svg" alt="PetAgeCalc Logo" class="w-10 h-10 object-contain shrink-0 transition-transform group-hover:scale-105" />
@@ -12,11 +12,11 @@ import ThemeToggle from './ThemeToggle.astro';
     </a>
 
     <!-- Desktop Nav Links -->
-    <div class="hidden md:flex items-center gap-1" id="nav-links-desktop">
-      <a href="#calculator" class="body-sm text-body hover:text-ink px-3 py-1.5 rounded-full transition-colors duration-200 no-underline">Calculator</a>
-      <a href="#how-it-works" class="body-sm text-body hover:text-ink px-3 py-1.5 rounded-full transition-colors duration-200 no-underline">How It Works</a>
-      <a href="#age-chart" class="body-sm text-body hover:text-ink px-3 py-1.5 rounded-full transition-colors duration-200 no-underline">Age Chart</a>
-      <a href="#faq" class="body-sm text-body hover:text-ink px-3 py-1.5 rounded-full transition-colors duration-200 no-underline">FAQ</a>
+    <div class="hidden md:flex items-center gap-2" id="nav-links-desktop">
+      <a href="/dog-age-calculator" class="text-[15px] font-medium text-mute hover:text-ink hover:bg-canvas-soft px-4 py-2 rounded-full transition-all duration-200 no-underline">Dog Calc</a>
+      <a href="/cat-age-calculator" class="text-[15px] font-medium text-mute hover:text-ink hover:bg-canvas-soft px-4 py-2 rounded-full transition-all duration-200 no-underline">Cat Calc</a>
+      <a href="/pet-advice" class="text-[15px] font-medium text-mute hover:text-ink hover:bg-canvas-soft px-4 py-2 rounded-full transition-all duration-200 no-underline">Pet Advice</a>
+      <a href="/#faq" class="text-[15px] font-medium text-mute hover:text-ink hover:bg-canvas-soft px-4 py-2 rounded-full transition-all duration-200 no-underline">FAQ</a>
     </div>
 
     <!-- CTA + Mobile Toggle -->
