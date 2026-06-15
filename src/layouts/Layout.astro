@@ -10,7 +10,7 @@ interface Props {
 const {
   title = "Online Pet Age Calculator — Dog & Cat Age to Human Years",
   description = "The most accurate online pet age calculator. Convert your pet's age to human years using our new dog age calculator by breed and weight, or our cat age calculator in human years.",
-  image = "/og-image.jpg"
+  image = "/og-image.png"
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -42,6 +42,23 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="PetAgeCalc" />
     <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+
+    <!-- Schema.org SoftwareApplication -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PetAgeCalc",
+      "url": canonicalURL,
+      "description": description,
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    })} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
