@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Calculator from '../components/Calculator.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import AgeTable from '../components/AgeTable.astro';
+import FAQ from '../components/FAQ.astro';
+import SeoArticle from '../components/SeoArticle.astro';
+import Footer from '../components/Footer.astro';
+
+const title = "Dog Age Calculator by Breed — Human Years Conversion";
+const description = "Use our highly accurate dog age calculator by breed and weight to find out exactly how old your dog is in human years. Includes mixed breed options.";
+---
+
+<Layout title={title} description={description}>
+  <Navbar />
+  <main>
+    <Hero type="dog" />
+    <Calculator type="dog" hideHeader={true} />
+    <HowItWorks type="dog" />
+    <AgeTable type="dog" />
+    <FAQ type="dog" />
+    <SeoArticle type="dog" />
+  </main>
+  <Footer />
+</Layout>

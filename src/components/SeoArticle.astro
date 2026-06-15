@@ -1,48 +1,60 @@
 ---
-// SeoArticle — SEO optimized content section
+interface Props {
+  type?: 'dog' | 'cat' | 'both';
+}
+
+const { type = 'both' } = Astro.props;
+const isDogOnly = type === 'dog';
+const isCatOnly = type === 'cat';
 ---
 
 <section id="seo-content" class="bg-canvas py-20 md:py-28 border-t border-hairline">
   <div class="page-container max-w-[800px]">
     <div class="text-center mb-12">
       <span class="caption-mono text-mute block mb-3">About This Tool</span>
-      <h2 class="display-lg display-lg-responsive text-ink">The Ultimate Online Pet Age Calculator</h2>
+      <h2 class="display-lg display-lg-responsive text-ink">
+        {type === 'dog' ? 'The Ultimate Dog Age Calculator' : type === 'cat' ? 'The Ultimate Cat Age Calculator' : 'The Ultimate Online Pet Age Calculator'}
+      </h2>
     </div>
 
     <div class="flex flex-col gap-8">
       <div>
         <p class="body-lg text-body mb-4">
-          Welcome to the most comprehensive online pet age calculator available. Whether you are trying to figure out how old your new puppy is or wanting to understand your senior feline's life stage, our tool provides unparalleled accuracy. The old adage that one pet year equals seven human years is outdated. Modern veterinary science has given us a deeper understanding of animal aging, and our new dog age calculator and cat age calculator reflect these advancements.
+          Welcome to the most comprehensive online {type === 'dog' ? 'dog' : type === 'cat' ? 'cat' : 'pet'} age calculator available. Whether you are trying to figure out how old your new {type === 'dog' ? 'puppy' : type === 'cat' ? 'kitten' : 'puppy or kitten'} is or wanting to understand your senior {type === 'dog' ? 'dog' : type === 'cat' ? 'feline' : 'pet'}'s life stage, our tool provides unparalleled accuracy. The old adage that one {type === 'both' ? 'pet' : type} year equals seven human years is outdated. Modern veterinary science has given us a deeper understanding of animal aging, and our new calculator reflects these advancements.
         </p>
       </div>
 
-      <div>
-        <h3 class="display-sm text-ink mb-3">Accurate Dog Age Calculator By Breed and Weight</h3>
-        <p class="body-md text-body mb-4">
-          Dogs are incredibly diverse, which means a one-size-fits-all approach doesn't work. A Great Dane ages at a vastly different rate than a Chihuahua. That is why we built a dog age calculator by breed size and dog age calculator by weight. Small breeds tend to mature quickly in their first two years but then age slowly, often living well into their late teens. Conversely, giant breeds age more rapidly after maturity. If you own a mutt, our dog age calculator mixed breed setting (based on adult weight) ensures you still get a highly accurate result.
-        </p>
-        <p class="body-md text-body">
-          Whether you know their exact date of birth and need a dog age calculator by birthday, or you only know they are a few weeks old and need a dog age calculator months tool, we have you covered. It is the perfect online dog age calculator for tracking your companion's developmental milestones from puppyhood to their senior years.
-        </p>
-      </div>
+      {!isCatOnly && (
+        <div>
+          <h3 class="display-sm text-ink mb-3">Accurate Dog Age Calculator By Breed and Weight</h3>
+          <p class="body-md text-body mb-4">
+            Dogs are incredibly diverse, which means a one-size-fits-all approach doesn't work. A Great Dane ages at a vastly different rate than a Chihuahua. That is why we built a dog age calculator by breed size and dog age calculator by weight. Small breeds tend to mature quickly in their first two years but then age slowly, often living well into their late teens. Conversely, giant breeds age more rapidly after maturity. If you own a mutt, our dog age calculator mixed breed setting (based on adult weight) ensures you still get a highly accurate result.
+          </p>
+          <p class="body-md text-body">
+            Whether you know their exact date of birth and need a dog age calculator by birthday, or you only know they are a few weeks old and need a dog age calculator months tool, we have you covered. It is the perfect online dog age calculator for tracking your companion's developmental milestones from puppyhood to their senior years.
+          </p>
+        </div>
+      )}
 
-      <div>
-        <h3 class="display-sm text-ink mb-3">Advanced Cat Age Calculator in Human Years</h3>
-        <p class="body-md text-body mb-4">
-          Feline aging is unique. In their first year of life, a kitten matures to the equivalent of a 15-year-old human teenager. By their second year, they are in their mid-twenties. Using our cat age calculator in human years, you can see exactly where your feline friend is on their life journey.
-        </p>
-        <p class="body-md text-body">
-          We also know that lifestyle plays a massive role in feline longevity. That is why our tool adjusts based on whether your cat is an indoor or outdoor pet. From a cat age calculator weeks input for tiny kittens, to a cat age calculator months approach, or even a cat age calculator by birthday for adult rescues, you will receive tailored insights and health tips for their specific life stage.
-        </p>
-      </div>
+      {!isDogOnly && (
+        <div>
+          <h3 class="display-sm text-ink mb-3">Advanced Cat Age Calculator in Human Years</h3>
+          <p class="body-md text-body mb-4">
+            Feline aging is unique. In their first year of life, a kitten matures to the equivalent of a 15-year-old human teenager. By their second year, they are in their mid-twenties. Using our cat age calculator in human years, you can see exactly where your feline friend is on their life journey.
+          </p>
+          <p class="body-md text-body">
+            We also know that lifestyle plays a massive role in feline longevity. That is why our tool adjusts based on whether your cat is an indoor or outdoor pet. From a cat age calculator weeks input for tiny kittens, to a cat age calculator months approach, or even a cat age calculator by birthday for adult rescues, you will receive tailored insights and health tips for their specific life stage.
+          </p>
+        </div>
+      )}
 
       <div>
         <h3 class="display-sm text-ink mb-3">Why Use an Animal Age Calculator?</h3>
         <p class="body-md text-body mb-4">
-          Understanding your pet's true age isn't just a fun trivia fact; it is a critical component of their healthcare. An online pet age calculator by breed allows pet parents to anticipate medical needs. For example, knowing that your small dog age calculator result places them in the "senior" category prompts you to start bi-annual vet checkups, switch to a senior diet, and monitor for joint issues.
+          Understanding your pet's true age isn't just a fun trivia fact; it is a critical component of their healthcare. An online {type === 'both' ? 'pet' : type} age calculator allows pet parents to anticipate medical needs. For example, knowing that your calculator result places them in the "senior" category prompts you to start bi-annual vet checkups, switch to a senior diet, and monitor for joint issues.
         </p>
         <p class="body-md text-body">
-          This animal age calculator was designed to give you instant, accurate, and actionable information. It is completely free, mobile-friendly, and requires no sign-ups. Calculate your pet's age today to ensure you are providing the best possible care for their specific stage of life!
+          This calculator was designed to give you instant, accurate, and actionable information. It is completely free, mobile-friendly, and requires no sign-ups. Calculate your {type === 'both' ? 'pet' : type}'s age today to ensure you are providing the best possible care for their specific stage of life!
         </p>
       </div>
     </div>

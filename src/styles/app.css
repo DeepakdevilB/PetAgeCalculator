@@ -262,6 +262,11 @@
     radial-gradient(ellipse 40% 30% at 30% 20%, #f9cb2820 0%, transparent 50%);
 }
 
+/* ─── Custom Animations ─── */
+@keyframes slide-gradient {
+  to { background-position: 200% center; }
+}
+
 /* ─── Responsive font sizes ─── */
 @media (max-width: 768px) {
   .display-xl-responsive {

@@ -3,65 +3,87 @@
 const faqs = [
   {
     question: "How to calculate pet age in human years?",
-    answer: "Use an age calculator that accounts for species, breed size, and lifestyle, as the old 'multiply by 7' rule is scientifically inaccurate."
+    answer: "Use an age calculator that accounts for species, breed size, and lifestyle, as the old 'multiply by 7' rule is scientifically inaccurate.",
+    type: "both"
   },
   {
     question: "How old is 1 year old dog in human years?",
-    answer: "A 1-year-old dog is approximately 15 in human years, as they have already reached physical and sexual maturity."
+    answer: "A 1-year-old dog is approximately 15 in human years, as they have already reached physical and sexual maturity.",
+    type: "dog"
   },
   {
     question: "Is 1 dog year really 7 human years?",
-    answer: "No, the \"7-year rule\" is a myth. It was a rough average that doesn't account for the rapid aging in a dog's first two years or the variation between breeds. A 1-year-old dog is actually closer to a 15-year-old human."
+    answer: "No, the \"7-year rule\" is a myth. It was a rough average that doesn't account for the rapid aging in a dog's first two years or the variation between breeds. A 1-year-old dog is actually closer to a 15-year-old human.",
+    type: "dog"
   },
   {
     question: "How old is 7 in dog years?",
-    answer: "A 7-year-old dog is typically 44 to 54 in human years, depending on their size. Small dogs are around 44, while giant breeds are already considered senior citizens at around 59 human years."
+    answer: "A 7-year-old dog is typically 44 to 54 in human years, depending on their size. Small dogs are around 44, while giant breeds are already considered senior citizens at around 59 human years.",
+    type: "dog"
   },
   {
     question: "How old is 7 in cat years?",
-    answer: "A 7-year-old cat is approximately 44 in human years if they live indoors, or 49 in human years if they are an outdoor cat."
+    answer: "A 7-year-old cat is approximately 44 in human years if they live indoors, or 49 in human years if they are an outdoor cat.",
+    type: "cat"
   },
   {
     question: "How old is 12 or 13 in dog years?",
-    answer: "A 12-year-old dog is roughly 64 to 89 human years old, and a 13-year-old dog is about 68 to 99 human years old, depending on their breed size. Giant breeds age much faster than toy breeds."
+    answer: "A 12-year-old dog is roughly 64 to 89 human years old, and a 13-year-old dog is about 68 to 99 human years old, depending on their breed size. Giant breeds age much faster than toy breeds.",
+    type: "dog"
   },
   {
     question: "How old is a 14 year old dog in human years?",
-    answer: "A 14-year-old dog is well into their geriatric stage, roughly equivalent to a human between 72 (for toy breeds) and 110+ years old (for large breeds)."
+    answer: "A 14-year-old dog is well into their geriatric stage, roughly equivalent to a human between 72 (for toy breeds) and 110+ years old (for large breeds).",
+    type: "dog"
   },
   {
     question: "How to calculate a dog's age?",
-    answer: "A dog's first year equals about 15 human years, the second adds 9 years, and each subsequent year adds 4-8 years depending on whether they are a small, medium, large, or giant breed."
+    answer: "A dog's first year equals about 15 human years, the second adds 9 years, and each subsequent year adds 4-8 years depending on whether they are a small, medium, large, or giant breed.",
+    type: "dog"
   },
   {
     question: "How do you calculate a cat's age?",
-    answer: "A cat's first year equals 15 human years, their second year equals 9 human years, and every year after that equals about 4 human years for indoor cats and 5 for outdoor cats."
+    answer: "A cat's first year equals 15 human years, their second year equals 9 human years, and every year after that equals about 4 human years for indoor cats and 5 for outdoor cats.",
+    type: "cat"
   },
   {
     question: "How old is an adult dog?",
-    answer: "Dogs generally reach adulthood between 1 and 2 years of age, though giant breeds may not fully mature until 2 years, while small breeds mature faster."
+    answer: "Dogs generally reach adulthood between 1 and 2 years of age, though giant breeds may not fully mature until 2 years, while small breeds mature faster.",
+    type: "dog"
   },
   {
     question: "How old is a senior dog?",
-    answer: "The senior stage begins at different ages based on size: roughly 10-11 years for small dogs, 8-9 years for medium dogs, and 6-7 years for large and giant breeds."
+    answer: "The senior stage begins at different ages based on size: roughly 10-11 years for small dogs, 8-9 years for medium dogs, and 6-7 years for large and giant breeds.",
+    type: "dog"
   },
   {
     question: "How old is an adult cat?",
-    answer: "A cat is considered a fully grown adult between the ages of 2 and 6 years old, which translates to roughly 24 to 40 in human years."
+    answer: "A cat is considered a fully grown adult between the ages of 2 and 6 years old, which translates to roughly 24 to 40 in human years.",
+    type: "cat"
   },
   {
     question: "How old is a senior cat?",
-    answer: "A cat is considered 'senior' when they reach 11 to 14 years of age (roughly 60 to 72 human years). After 15 years, they are classified as geriatric."
+    answer: "A cat is considered 'senior' when they reach 11 to 14 years of age (roughly 60 to 72 human years). After 15 years, they are classified as geriatric.",
+    type: "cat"
   },
   {
     question: "How to tell a dog's age in human years?",
-    answer: "You can tell a dog's age in human years by calculating 15 years for the first year, 9 for the second, and adding 4-8 years for each subsequent year depending on their breed size."
+    answer: "You can tell a dog's age in human years by calculating 15 years for the first year, 9 for the second, and adding 4-8 years for each subsequent year depending on their breed size.",
+    type: "dog"
   },
   {
     question: "How can I identify my cat's age?",
-    answer: "Vets estimate a cat's age by checking for tartar on their teeth, cloudiness in the lenses of their eyes, and the stiffness or condition of their coat and joints."
+    answer: "Vets estimate a cat's age by checking for tartar on their teeth, cloudiness in the lenses of their eyes, and the stiffness or condition of their coat and joints.",
+    type: "cat"
   }
 ];
+
+interface Props {
+  type?: 'dog' | 'cat' | 'both';
+}
+
+const { type = 'both' } = Astro.props;
+const filteredFaqs = faqs.filter(f => type === 'both' || f.type === 'both' || f.type === type);
 ---
 
 <section id="faq" class="bg-canvas py-20 md:py-28">
@@ -74,11 +96,11 @@ const faqs = [
 
     <!-- FAQ Accordion -->
     <div class="flex flex-col gap-0 border border-hairline rounded-lg overflow-hidden shadow-level-2">
-      {faqs.map((faq, index) => (
+      {filteredFaqs.map((faq, index) => (
         <details
           class:list={[
             "group",
-            index < faqs.length - 1 && "border-b border-hairline"
+            index < filteredFaqs.length - 1 && "border-b border-hairline"
           ]}
           id={`faq-${index}`}
         >
@@ -110,7 +132,7 @@ const faqs = [
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqs.map(faq => ({
+  "mainEntity": filteredFaqs.map(faq => ({
     "@type": "Question",
     "name": faq.question,
     "acceptedAnswer": {

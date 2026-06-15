@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Calculator from '../components/Calculator.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import AgeTable from '../components/AgeTable.astro';
+import FAQ from '../components/FAQ.astro';
+import SeoArticle from '../components/SeoArticle.astro';
+import Footer from '../components/Footer.astro';
+
+const title = "Cat Age Calculator in Human Years — Indoor & Outdoor";
+const description = "Use our precise cat age calculator to convert your feline's age into human years. Tailored results based on whether your cat is an indoor or outdoor pet.";
+---
+
+<Layout title={title} description={description}>
+  <Navbar />
+  <main>
+    <Hero type="cat" />
+    <Calculator type="cat" hideHeader={true} />
+    <HowItWorks type="cat" />
+    <AgeTable type="cat" />
+    <FAQ type="cat" />
+    <SeoArticle type="cat" />
+  </main>
+  <Footer />
+</Layout>

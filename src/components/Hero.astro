@@ -1,5 +1,9 @@
 ---
-// Hero — Vercel-style mesh gradient hero section
+interface Props {
+  type?: 'dog' | 'cat' | 'hub';
+}
+
+const { type = 'hub' } = Astro.props;
 ---
 
 <section id="hero" class="relative overflow-hidden bg-canvas pt-16">
@@ -13,7 +17,7 @@
 
   <div class="relative page-container flex flex-col items-center text-center py-20 md:py-28 lg:py-36">
     <!-- Announcement Badge -->
-    <a href="#calculator" class="inline-flex items-center gap-2 bg-canvas-soft-2 text-body body-sm rounded-full px-4 py-1.5 mb-8 no-underline shadow-level-1 hover:bg-hairline transition-colors duration-200 group">
+    <a href={type === 'hub' ? '#how-it-works' : '#calculator'} class="inline-flex items-center gap-2 bg-canvas-soft-2 text-body body-sm rounded-full px-4 py-1.5 mb-8 no-underline shadow-level-1 hover:bg-hairline transition-colors duration-200 group">
       <span class="text-base">🐾</span>
       <span>Free & instant — no sign-up required</span>
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" class="transition-transform group-hover:translate-x-0.5">
@@ -23,30 +27,47 @@
 
     <!-- Headline -->
     <h1 class="display-xl display-xl-responsive max-w-[800px] text-ink mb-4">
-      How old is your pet in human years.
+      {type === 'dog' ? 'How old is your dog in human years.' : type === 'cat' ? 'How old is your cat in human years.' : 'How old is your pet in human years.'}
     </h1>
 
     <!-- Sub-headline -->
     <p class="body-lg text-body max-w-[560px] mb-10">
-      Discover your dog or cat's true age with our scientifically accurate, breed-aware calculator.
+      {type === 'dog' ? 'Discover your dog\'s true age with our scientifically accurate, breed-aware calculator.' : type === 'cat' ? 'Discover your cat\'s true age based on their lifestyle and environment.' : 'Discover your dog or cat\'s true age with our scientifically accurate calculators.'}
     </p>
 
     <!-- CTA Row -->
-    <div class="flex flex-col sm:flex-row items-center gap-4 w-full max-w-[400px] sm:max-w-none mx-auto">
-      <a
-        href="#calculator"
-        class="flex w-full sm:w-auto items-center justify-center bg-primary text-on-primary button-text-lg rounded-pill px-8 h-12 no-underline transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-level-2"
-        id="hero-cta-primary"
-      >
-        Calculate now
-      </a>
-      <a
-        href="#how-it-works"
-        class="flex w-full sm:w-auto items-center justify-center bg-canvas text-ink button-text-lg rounded-pill px-8 h-12 no-underline border border-hairline transition-all duration-200 hover:border-hairline-strong hover:shadow-level-2 active:scale-[0.98]"
-        id="hero-cta-secondary"
-      >
-        Learn more
-      </a>
+    <div class="flex flex-col sm:flex-row items-center gap-4 w-full max-w-[600px] sm:max-w-none mx-auto justify-center">
+      {type === 'hub' ? (
+        <>
+          <a
+            href="/dog-age-calculator"
+            class="flex w-full sm:w-auto items-center justify-center bg-primary text-on-primary button-text-lg rounded-pill px-8 h-14 no-underline transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-level-2"
+          >
+            <span class="mr-2 text-xl">🐕</span> Calculate Dog Age
+          </a>
+          <a
+            href="/cat-age-calculator"
+            class="flex w-full sm:w-auto items-center justify-center bg-canvas text-ink button-text-lg rounded-pill px-8 h-14 no-underline border border-hairline transition-all duration-200 hover:border-hairline-strong hover:shadow-level-2 active:scale-[0.98]"
+          >
+            <span class="mr-2 text-xl">🐈</span> Calculate Cat Age
+          </a>
+        </>
+      ) : (
+        <>
+          <a
+            href="#calculator"
+            class="flex w-full sm:w-auto items-center justify-center bg-primary text-on-primary button-text-lg rounded-pill px-8 h-12 no-underline transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-level-2"
+          >
+            Calculate now
+          </a>
+          <a
+            href={type === 'dog' ? '/cat-age-calculator' : '/dog-age-calculator'}
+            class="flex w-full sm:w-auto items-center justify-center bg-canvas text-ink button-text-lg rounded-pill px-8 h-12 no-underline border border-hairline transition-all duration-200 hover:border-hairline-strong hover:shadow-level-2 active:scale-[0.98]"
+          >
+            Switch to {type === 'dog' ? 'Cat' : 'Dog'}
+          </a>
+        </>
+      )}
     </div>
 
     <!-- Quick Links -->

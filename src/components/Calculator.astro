@@ -1,45 +1,57 @@
 ---
-// Calculator — Section wrapper
+interface Props {
+  type?: 'dog' | 'cat' | 'both';
+  hideHeader?: boolean;
+}
+
+const { type = 'both', hideHeader = false } = Astro.props;
+
+const isDogOnly = type === 'dog';
+const isCatOnly = type === 'cat';
 ---
 
 <section id="calculator" class="bg-canvas-soft py-20 md:py-28">
   <div class="page-container">
     <!-- Section Eyebrow -->
-    <div class="text-center mb-12">
-      <span class="caption-mono text-mute block mb-3">Pet Age Calculator</span>
-      <h2 class="display-lg display-lg-responsive text-ink">Calculate your pet's real age.</h2>
-    </div>
+    {!hideHeader && (
+      <div class="text-center mb-12">
+        <span class="caption-mono text-mute block mb-3">Pet Age Calculator</span>
+        <h2 class="display-lg display-lg-responsive text-ink">Calculate your {type === 'dog' ? 'dog' : type === 'cat' ? 'cat' : 'pet'}'s real age.</h2>
+      </div>
+    )}
 
     <!-- Calculator Card -->
-    <div class="max-w-[42rem] mx-auto bg-canvas rounded-lg shadow-level-4 overflow-hidden" id="calculator-card">
+    <div class="max-w-[42rem] mx-auto bg-canvas rounded-lg shadow-level-4 overflow-hidden" id="calculator-card" data-type={type}>
       <!-- Calculator Form -->
       <div class="p-6 md:p-8 lg:p-10">
         <!-- Pet Type Toggle -->
-        <div class="mb-8">
-          <label class="body-sm-strong text-ink block mb-3">Choose your pet</label>
-          <div class="flex bg-canvas-soft-2 rounded-pill-sm p-1 gap-1" role="tablist" id="pet-type-tabs">
-            <button
-              role="tab"
-              id="tab-dog"
-              aria-selected="true"
-              class="pet-tab flex-1 flex items-center justify-center gap-2 body-sm-strong rounded-pill-sm h-12 transition-all duration-200 bg-canvas text-ink shadow-level-1"
-              data-pet="dog"
-            >
-              <span class="text-lg">🐕</span>
-              Dog
-            </button>
-            <button
-              role="tab"
-              id="tab-cat"
-              aria-selected="false"
-              class="pet-tab flex-1 flex items-center justify-center gap-2 body-sm-strong rounded-pill-sm h-12 transition-all duration-200 text-body hover:text-ink"
-              data-pet="cat"
-            >
-              <span class="text-lg">🐈</span>
-              Cat
-            </button>
+        {type === 'both' && (
+          <div class="mb-8" id="pet-type-container">
+            <label class="body-sm-strong text-ink block mb-3">Choose your pet</label>
+            <div class="flex bg-canvas-soft-2 rounded-pill-sm p-1 gap-1" role="tablist" id="pet-type-tabs">
+              <button
+                role="tab"
+                id="tab-dog"
+                aria-selected="true"
+                class="pet-tab flex-1 flex items-center justify-center gap-2 body-sm-strong rounded-pill-sm h-12 transition-all duration-200 bg-canvas text-ink shadow-level-1"
+                data-pet="dog"
+              >
+                <span class="text-lg">🐕</span>
+                Dog
+              </button>
+              <button
+                role="tab"
+                id="tab-cat"
+                aria-selected="false"
+                class="pet-tab flex-1 flex items-center justify-center gap-2 body-sm-strong rounded-pill-sm h-12 transition-all duration-200 text-body hover:text-ink"
+                data-pet="cat"
+              >
+                <span class="text-lg">🐈</span>
+                Cat
+              </button>
+            </div>
           </div>
-        </div>
+        )}
 
         <!-- Age Input -->
         <div class="mb-8">
@@ -83,7 +95,7 @@
         </div>
 
         <!-- Dog Breed / Size (shown for dogs) -->
-        <div id="dog-size-group" class="mb-8">
+        <div id="dog-size-group" class={`mb-8 ${isCatOnly ? 'hidden' : ''}`}>
           <label for="breed-search" class="body-sm-strong text-ink block mb-3">Dog breed</label>
           
           <!-- Breed Search Combobox -->
@@ -129,8 +141,8 @@
           </div>
         </div>
 
-        <!-- Cat Type (shown for cats, hidden by default) -->
-        <div id="cat-type-group" class="mb-8 hidden">
+        <!-- Cat Type (shown for cats, hidden by default unless type is cat) -->
+        <div id="cat-type-group" class={`mb-8 ${!isCatOnly ? 'hidden' : ''}`}>
           <label class="body-sm-strong text-ink block mb-3">Cat lifestyle</label>
           <div class="flex bg-canvas-soft-2 rounded-pill-sm p-1 gap-1" id="cat-type-options">
             <button class="cat-btn flex-1 body-sm-strong rounded-pill-sm h-11 transition-all duration-200 bg-canvas text-ink shadow-level-1" data-type="indoor">🏠 Indoor</button>
@@ -189,6 +201,18 @@
               <span class="body-sm-strong text-ink">Health tip for this life stage</span>
             </div>
             <p id="result-tip" class="body-sm text-body"></p>
+          </div>
+
+          <!-- Did you know? (Rotating Facts) -->
+          <div class="relative overflow-hidden rounded-md p-[1px] mt-6 shadow-level-2 group">
+            <div class="absolute inset-0 bg-[linear-gradient(90deg,var(--color-grad-preview-start),var(--color-grad-preview-end),var(--color-grad-preview-start))] bg-[length:200%_100%] animate-[slide-gradient_3s_linear_infinite]"></div>
+            <div class="relative bg-canvas p-5 rounded-[5px] h-full flex flex-col justify-center">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-xl animate-pulse">✨</span>
+                <span class="caption-mono text-ink">Did you know?</span>
+              </div>
+              <p id="result-fact" class="body-sm text-body min-h-[40px] transition-all duration-500 transform translate-y-0 opacity-100"></p>
+            </div>
           </div>
 
           <!-- Action Row -->
@@ -389,12 +413,14 @@
     }
   }
 
-  // ─── State ───
-  let currentPet = 'dog';
+  // ─── DOM Elements & Initialization ───
+  const wrapper = document.getElementById('calculator-card')!;
+  const calcType = wrapper.dataset.type || 'both';
+  
+  let currentPet = calcType === 'cat' ? 'cat' : 'dog';
   let currentDogSize = 'small';
   let currentCatType = 'indoor';
 
-  // ─── DOM Elements ───
   const petTabs = document.querySelectorAll('.pet-tab') as NodeListOf<HTMLButtonElement>;
   const dogSizeGroup = document.getElementById('dog-size-group')!;
   const catTypeGroup = document.getElementById('cat-type-group')!;
@@ -569,8 +595,72 @@
       timelineBar.style.width = `${timelinePercent}%`;
     });
 
+    // Start rotating facts
+    startFacts();
+
     // Scroll to results
     resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ─── Facts Logic ───
+  const FACTS = {
+    dog: [
+      "A dog's sense of smell is 10,000 to 100,000 times more sensitive than ours!",
+      "Dogs can learn over 100 words and gestures.",
+      "Your dog's nose print is as unique as a human fingerprint.",
+      "Greyhounds can run up to 45 miles per hour.",
+      "Dogs have three eyelids to protect their eyes."
+    ],
+    cat: [
+      "Cats spend 70% of their lives sleeping.",
+      "A cat's purr has been shown to improve bone density.",
+      "Cats can rotate their ears 180 degrees.",
+      "A cat's nose print is completely unique, just like a human fingerprint.",
+      "Cats don't have collarbones, allowing them to fit through tight spaces."
+    ]
+  };
+
+  let factInterval: ReturnType<typeof setInterval>;
+  const resultFactEl = document.getElementById('result-fact')!;
+
+  function startFacts() {
+    clearInterval(factInterval);
+    const petFacts = FACTS[currentPet as keyof typeof FACTS];
+    let index = Math.floor(Math.random() * petFacts.length);
+    
+    // Initial fact
+    resultFactEl.textContent = petFacts[index];
+    resultFactEl.style.opacity = '1';
+    resultFactEl.style.transform = 'translateY(0)';
+
+    // Rotate every 5 seconds
+    factInterval = setInterval(() => {
+      // Slide up and fade out
+      resultFactEl.style.opacity = '0';
+      resultFactEl.style.transform = 'translateY(-10px)';
+      
+      setTimeout(() => {
+        // Change text
+        index = (index + 1) % petFacts.length;
+        resultFactEl.textContent = petFacts[index];
+        
+        // Reset position to bottom instantly without transition
+        resultFactEl.style.transition = 'none';
+        resultFactEl.style.transform = 'translateY(10px)';
+        
+        // Trigger reflow to apply the un-transitioned state
+        void resultFactEl.offsetWidth;
+        
+        // Restore transition, slide to middle and fade in
+        resultFactEl.style.transition = 'all 0.5s ease';
+        resultFactEl.style.opacity = '1';
+        resultFactEl.style.transform = 'translateY(0)';
+      }, 500); // Wait for fade out
+    }, 5000);
+  }
+
+  function stopFacts() {
+    clearInterval(factInterval);
   }
 
   calculateBtn.addEventListener('click', runCalculation);
@@ -579,6 +669,7 @@
   recalculateBtn.addEventListener('click', () => {
     resultsPanel.classList.add('hidden');
     timelineBar.style.width = '0%';
+    stopFacts();
     document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' });
   });
 
