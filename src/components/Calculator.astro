@@ -27,7 +27,7 @@ const isCatOnly = type === 'cat';
         <!-- Pet Type Toggle -->
         {type === 'both' && (
           <div class="mb-8" id="pet-type-container">
-            <label class="body-sm-strong text-ink block mb-3">Choose your pet</label>
+            <label class="text-base font-semibold text-ink block mb-3">Choose your pet</label>
             <div class="flex bg-canvas-soft-2 rounded-pill-sm p-1 gap-1" role="tablist" id="pet-type-tabs">
               <button
                 role="tab"
@@ -55,10 +55,10 @@ const isCatOnly = type === 'cat';
 
         <!-- Age Input -->
         <div class="mb-8">
-          <label class="body-sm-strong text-ink block mb-3">Pet's age</label>
+          <label class="text-base font-semibold text-ink block mb-3">Pet's age</label>
           <div class="flex gap-3">
             <div class="flex-1">
-              <label for="age-years" class="caption-text text-mute block mb-1.5">Years</label>
+              <label for="age-years" class="body-sm text-mute block mb-1.5">Years</label>
               <div class="relative">
                 <input
                   type="number"
@@ -66,15 +66,15 @@ const isCatOnly = type === 'cat';
                   min="0"
                   max="25"
                   value="3"
-                  class="w-full h-12 bg-canvas border border-hairline rounded-sm px-3 body-sm text-ink outline-none focus:border-link focus:ring-1 focus:ring-link transition-all"
+                  class="w-full h-14 bg-canvas border border-hairline rounded-sm px-4 body-md text-ink outline-none focus:border-link focus:ring-1 focus:ring-link transition-all"
                 />
               </div>
             </div>
             <div class="flex-1">
-              <label for="age-months" class="caption-text text-mute block mb-1.5">Months</label>
+              <label for="age-months" class="body-sm text-mute block mb-1.5">Months</label>
               <select
                 id="age-months"
-                class="w-full h-12 bg-canvas border border-hairline rounded-sm px-3 body-sm text-ink outline-none focus:border-link focus:ring-1 focus:ring-link transition-all appearance-none cursor-pointer"
+                class="w-full h-14 bg-canvas border border-hairline rounded-sm px-4 body-md text-ink outline-none focus:border-link focus:ring-1 focus:ring-link transition-all appearance-none cursor-pointer"
               >
                 <option value="0">0</option>
                 <option value="1">1</option>
@@ -91,12 +91,12 @@ const isCatOnly = type === 'cat';
               </select>
             </div>
           </div>
-          <p class="caption-text text-mute mt-2">Not sure? Give your best guess!</p>
+          <p class="body-sm text-mute mt-2">Not sure? Give your best guess!</p>
         </div>
 
         <!-- Dog Breed / Size (shown for dogs) -->
         <div id="dog-size-group" class={`mb-8 ${isCatOnly ? 'hidden' : ''}`}>
-          <label for="breed-search" class="body-sm-strong text-ink block mb-3">Dog breed</label>
+          <label for="breed-search" class="text-base font-semibold text-ink block mb-3">Dog breed</label>
           
           <!-- Breed Search Combobox -->
           <div class="relative mb-4" id="breed-selector-group">
@@ -108,7 +108,7 @@ const isCatOnly = type === 'cat';
                 type="text"
                 id="breed-search"
                 placeholder="Search breeds (e.g. Golden Retriever)..."
-                class="w-full h-12 bg-canvas border border-hairline rounded-sm pl-10 pr-10 body-sm text-ink outline-none focus:border-link focus:ring-1 focus:ring-link transition-all"
+                class="w-full h-14 bg-canvas border border-hairline rounded-sm pl-12 pr-10 body-md text-ink outline-none focus:border-link focus:ring-1 focus:ring-link transition-all"
                 autocomplete="off"
               />
               <!-- Clear button -->
@@ -125,35 +125,56 @@ const isCatOnly = type === 'cat';
             </ul>
           </div>
 
-          <!-- Fallback Size Selection (Hidden initially unless Mixed/Unknown is selected, but for UX, let's keep it visible until they type a breed) -->
+          <!-- Fallback Size Selection -->
           <div id="dog-size-fallback" class="animate-fade-in">
-            <label class="body-sm-strong text-ink block mb-3">Estimated adult size</label>
-            <div class="grid grid-cols-2 sm:grid-cols-5 gap-2" id="dog-size-options">
-              <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all" data-size="toy">Toy</button>
-              <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all active" data-size="small">Small</button>
-              <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all" data-size="medium">Medium</button>
-              <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all" data-size="large">Large</button>
-              <button class="size-btn body-sm rounded-sm h-11 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all col-span-2 sm:col-span-1" data-size="giant">Giant</button>
+            <label class="text-base font-semibold text-ink block mb-3">Estimated adult size</label>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-x-2 gap-y-4" id="dog-size-options">
+              <!-- Toy -->
+              <div class="flex flex-col gap-1">
+                <button class="size-btn w-full body-md rounded-sm h-12 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all" data-size="toy">Toy</button>
+                <span class="body-sm text-mute text-center">&lt;10 lbs</span>
+              </div>
+              
+              <!-- Small -->
+              <div class="flex flex-col gap-1">
+                <button class="size-btn w-full body-md rounded-sm h-12 border border-primary bg-primary text-on-primary transition-all" data-size="small">Small</button>
+                <span class="body-sm text-mute text-center">10-25 lbs</span>
+              </div>
+
+              <!-- Medium -->
+              <div class="flex flex-col gap-1">
+                <button class="size-btn w-full body-md rounded-sm h-12 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all" data-size="medium">Medium</button>
+                <span class="body-sm text-mute text-center">25-50 lbs</span>
+              </div>
+
+              <!-- Large -->
+              <div class="flex flex-col gap-1">
+                <button class="size-btn w-full body-md rounded-sm h-12 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all" data-size="large">Large</button>
+                <span class="body-sm text-mute text-center">50-100 lbs</span>
+              </div>
+
+              <!-- Giant -->
+              <div class="flex flex-col gap-1 col-span-2 sm:col-span-1">
+                <button class="size-btn w-full body-md rounded-sm h-12 border border-hairline bg-canvas text-body hover:border-hairline-strong transition-all" data-size="giant">Giant</button>
+                <span class="body-sm text-mute text-center">100+ lbs</span>
+              </div>
             </div>
-            <p class="caption-text text-mute mt-2">
-              <span class="font-medium">Toy:</span> &lt;10 lbs · <span class="font-medium">Small:</span> 10-25 lbs · <span class="font-medium">Medium:</span> 25-50 lbs · <span class="font-medium">Large:</span> 50-100 lbs · <span class="font-medium">Giant:</span> 100+ lbs
-            </p>
           </div>
         </div>
 
         <!-- Cat Type (shown for cats, hidden by default unless type is cat) -->
         <div id="cat-type-group" class={`mb-8 ${!isCatOnly ? 'hidden' : ''}`}>
-          <label class="body-sm-strong text-ink block mb-3">Cat lifestyle</label>
+          <label class="text-base font-semibold text-ink block mb-3">Cat lifestyle</label>
           <div class="flex bg-canvas-soft-2 rounded-pill-sm p-1 gap-1" id="cat-type-options">
-            <button class="cat-btn flex-1 body-sm-strong rounded-pill-sm h-11 transition-all duration-200 bg-canvas text-ink shadow-level-1" data-type="indoor">🏠 Indoor</button>
-            <button class="cat-btn flex-1 body-sm-strong rounded-pill-sm h-11 transition-all duration-200 text-body hover:text-ink" data-type="outdoor">🌳 Outdoor</button>
+            <button class="cat-btn flex-1 text-base font-medium rounded-pill-sm h-12 transition-all duration-200 bg-canvas text-ink shadow-level-1" data-type="indoor">🏠 Indoor</button>
+            <button class="cat-btn flex-1 text-base font-medium rounded-pill-sm h-12 transition-all duration-200 text-body hover:text-ink" data-type="outdoor">🌳 Outdoor</button>
           </div>
         </div>
 
         <!-- Calculate Button -->
         <button
           id="calculate-btn"
-          class="w-full flex items-center justify-center bg-primary text-on-primary button-text-lg rounded-pill h-12 transition-all duration-200 hover:opacity-90 hover:scale-[1.005] active:scale-[0.99] shadow-level-2 cursor-pointer"
+          class="w-full flex items-center justify-center bg-primary text-on-primary text-lg font-semibold rounded-pill h-14 mt-4 transition-all duration-200 hover:opacity-90 hover:scale-[1.005] active:scale-[0.99] shadow-level-2 cursor-pointer"
         >
           Calculate age
         </button>
@@ -180,15 +201,33 @@ const isCatOnly = type === 'cat';
           </div>
 
           <!-- Age Timeline Bar -->
-          <div class="mb-8">
-            <div class="flex justify-between body-sm text-mute mb-2">
+          <div class="mb-8 mt-2">
+            <div class="flex justify-between body-sm-strong text-ink mb-3 px-1">
               <span id="timeline-pet-label">Puppy</span>
               <span>Senior</span>
             </div>
-            <div class="relative h-2 bg-canvas-soft-2 rounded-full overflow-hidden">
-              <div id="timeline-bar" class="absolute left-0 top-0 h-full rounded-full transition-all duration-700 ease-out" style="width: 0%; background: linear-gradient(90deg, var(--color-grad-develop-start), var(--color-grad-develop-end), var(--color-grad-preview-start), var(--color-grad-preview-end));"></div>
+            
+            <div class="relative h-4 bg-canvas-soft shadow-inner rounded-full overflow-hidden border border-hairline flex items-center px-[2px]">
+              
+              <!-- Background ruler tick marks -->
+              <div class="absolute inset-0 flex justify-evenly opacity-20 pointer-events-none">
+                <div class="w-px h-full bg-body"></div>
+                <div class="w-px h-full bg-body"></div>
+                <div class="w-px h-full bg-body"></div>
+              </div>
+              
+              <!-- The Bar Fill -->
+              <div 
+                id="timeline-bar" 
+                class="relative h-3 rounded-full transition-all duration-[1500ms] ease-out flex items-center justify-end shadow-level-2" 
+                style="width: 0%; background: linear-gradient(90deg, var(--color-grad-develop-start), var(--color-grad-preview-start), var(--color-grad-preview-end)); background-size: 200% 100%; animation: slide-gradient 3s linear infinite;"
+              >
+                <!-- Glowing Indicator Dot -->
+                <div class="w-2.5 h-2.5 bg-white rounded-full shadow-[0_0_12px_4px_rgba(255,255,255,0.7)] mr-[2px]"></div>
+              </div>
             </div>
-            <div class="flex justify-between caption-text text-mute mt-1.5">
+            
+            <div class="flex justify-between caption-mono text-mute mt-3 px-1">
               <span>0 years</span>
               <span id="timeline-max-label">15 years</span>
             </div>
