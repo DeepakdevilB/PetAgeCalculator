@@ -1,6 +1,6 @@
-# PetAgeCalc — Dog & Cat Age Calculator
+# MyPetAgeCalc — Dog & Cat Age Calculator
 
-PetAgeCalc is an ultra-fast, visually stunning web application built with **Astro 5** and **Tailwind CSS v4**. It features accurate calculators to convert your pet's age into human years, alongside a rich, Markdown-powered Pet Advice blog.
+MyPetAgeCalc is an ultra-fast, visually stunning web application built with **Astro 5** and **Tailwind CSS v4**. It features accurate calculators to convert your pet's age into human years, alongside a rich, Markdown-powered Pet Advice blog.
 
 ## 🚀 Features
 
@@ -44,7 +44,7 @@ The blog is fully dynamic and powered by Markdown. To add a new article, simply 
 title: "Your Post Title"
 description: "A short description for SEO and the preview card."
 pubDate: "2026-06-15"
-author: "PetAgeCalc Team"
+author: "MyPetAgeCalc Team"
 tags: ["dogs", "health"]
 ---
 

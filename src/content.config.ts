@@ -7,7 +7,7 @@ const blogCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
-    author: z.string().default('PetAgeCalc Team'),
+    author: z.string().default('MyPetAgeCalc Team'),
     image: z.string().optional(),
     tags: z.array(z.string()).default([]),
   }),

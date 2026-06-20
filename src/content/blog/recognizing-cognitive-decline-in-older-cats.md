@@ -2,7 +2,7 @@
 title: "Recognizing Cognitive Decline in Older Cats"
 description: "Feline Cognitive Dysfunction (FCD) is similar to Alzheimer's in humans. Learn the signs to look out for as your cat ages."
 pubDate: "2026-06-06"
-author: "PetAgeCalc Team"
+author: "MyPetAgeCalc Team"
 tags: ["cats", "aging", "health"]
 ---
 

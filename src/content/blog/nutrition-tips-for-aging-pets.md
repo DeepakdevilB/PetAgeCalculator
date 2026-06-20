@@ -2,7 +2,7 @@
 title: "Nutrition Tips for Aging Pets"
 description: "As your pet ages, their metabolism slows down. Here is how to adjust their diet to prevent obesity and support cognitive function."
 pubDate: "2026-06-08"
-author: "PetAgeCalc Team"
+author: "MyPetAgeCalc Team"
 tags: ["dogs", "cats", "nutrition"]
 ---
 

@@ -2,7 +2,7 @@
 title: "How Dental Care Adds Years to Your Pet's Life"
 description: "Did you know that periodontal disease can shorten your dog's lifespan by up to 3 years? Learn why brushing their teeth is vital."
 pubDate: "2026-06-11"
-author: "PetAgeCalc Team"
+author: "MyPetAgeCalc Team"
 tags: ["dogs", "cats", "health"]
 ---
 

@@ -2,7 +2,7 @@
 title: "How Often Should Senior Dogs Visit the Vet?"
 description: "Once a year isn't enough anymore. Discover the recommended veterinary schedule for dogs over the age of 7."
 pubDate: "2026-06-07"
-author: "PetAgeCalc Team"
+author: "MyPetAgeCalc Team"
 tags: ["dogs", "health", "care"]
 ---
 

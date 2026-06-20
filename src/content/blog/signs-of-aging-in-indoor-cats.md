@@ -2,7 +2,7 @@
 title: "7 Signs of Aging in Indoor Cats You Shouldn't Ignore"
 description: "Cats are masters at hiding discomfort. Learn how to spot the subtle signs that your feline friend is entering their senior years."
 pubDate: "2026-06-14"
-author: "PetAgeCalc Team"
+author: "MyPetAgeCalc Team"
 tags: ["cats", "aging", "health"]
 ---
 

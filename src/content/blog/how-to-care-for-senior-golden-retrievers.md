@@ -2,7 +2,7 @@
 title: "How to Care for a Senior Golden Retriever"
 description: "Golden Retrievers have specific needs as they age. From joint supplements to specialized diets, here is everything you need to know."
 pubDate: "2026-06-13"
-author: "PetAgeCalc Team"
+author: "MyPetAgeCalc Team"
 tags: ["dogs", "breeds", "care"]
 ---
 

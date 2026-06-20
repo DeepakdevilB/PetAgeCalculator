@@ -2,7 +2,7 @@
 title: "The Lifespan of Chihuahuas: What to Expect"
 description: "Small dogs live much longer than large dogs. Find out what the typical lifespan of a Chihuahua is and how to maximize it."
 pubDate: "2026-06-12"
-author: "PetAgeCalc Team"
+author: "MyPetAgeCalc Team"
 tags: ["dogs", "breeds", "lifespan"]
 ---
 

@@ -2,7 +2,7 @@
 title: "How to Calculate Your Dog's Age Accurately"
 description: "The 'multiply by 7' rule is a myth. Learn the scientific way to calculate your dog's age in human years based on their breed and weight."
 pubDate: "2026-06-15"
-author: "PetAgeCalc Team"
+author: "MyPetAgeCalc Team"
 tags: ["dogs", "aging", "health"]
 ---
 

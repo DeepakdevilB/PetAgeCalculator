@@ -2,7 +2,7 @@
 title: "The Tragic Reality of Giant Breed Dog Aging"
 description: "Why do Great Danes and Mastiffs age so quickly? An in-depth look at the biology of giant breed dogs and how to support them."
 pubDate: "2026-06-09"
-author: "PetAgeCalc Team"
+author: "MyPetAgeCalc Team"
 tags: ["dogs", "breeds", "aging"]
 ---
 

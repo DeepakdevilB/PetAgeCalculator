@@ -2,7 +2,7 @@
 title: "Is My Cat a Senior Yet? The Feline Aging Timeline"
 description: "Cats age differently than dogs. We break down the life stages of a domestic cat so you know exactly when to start senior care."
 pubDate: "2026-06-10"
-author: "PetAgeCalc Team"
+author: "MyPetAgeCalc Team"
 tags: ["cats", "aging"]
 ---
 
