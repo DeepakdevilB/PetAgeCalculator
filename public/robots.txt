@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://petagecalc.com/sitemap-index.xml
+Sitemap: https://mypetagecalc.com/sitemap-index.xml

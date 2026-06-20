@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://petagecalc.com',
+  site: 'https://mypetagecalc.com',
 
   vite: {
     plugins: [tailwindcss()],
