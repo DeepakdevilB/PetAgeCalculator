@@ -243,14 +243,14 @@ const isCatOnly = type === 'cat';
           </div>
 
           <!-- Did you know? (Rotating Facts) -->
-          <div class="relative overflow-hidden rounded-md p-[1px] mt-6 shadow-level-2 group">
+          <div class="relative overflow-hidden rounded-md p-[3px] mt-6 shadow-level-2 group">
             <div class="absolute inset-0 bg-[linear-gradient(90deg,var(--color-grad-preview-start),var(--color-grad-preview-end),var(--color-grad-preview-start))] bg-[length:200%_100%] animate-[slide-gradient_3s_linear_infinite]"></div>
             <div class="relative bg-canvas p-5 rounded-[5px] h-full flex flex-col justify-center">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-xl animate-pulse">✨</span>
                 <span class="caption-mono text-ink">Did you know?</span>
               </div>
-              <p id="result-fact" class="body-sm text-body min-h-[40px] transition-all duration-500 transform translate-y-0 opacity-100"></p>
+              <p id="result-fact" class="text-base sm:text-lg font-bold text-ink leading-relaxed min-h-[48px] transition-all duration-500 transform translate-y-0 opacity-100"></p>
             </div>
           </div>
 
@@ -258,7 +258,7 @@ const isCatOnly = type === 'cat';
           <div class="flex flex-col sm:flex-row gap-3 mt-6">
             <button
               id="share-btn"
-              class="flex-1 flex items-center justify-center gap-2 body-sm-strong rounded-pill h-10 border border-hairline bg-canvas text-ink hover:border-hairline-strong transition-all cursor-pointer"
+              class="flex-1 flex items-center justify-center gap-2 font-semibold text-base rounded-pill min-h-[52px] sm:min-h-[48px] border border-hairline bg-canvas text-ink hover:border-hairline-strong transition-all cursor-pointer"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M4 8v5a1 1 0 001 1h6a1 1 0 001-1V8" />
@@ -269,7 +269,7 @@ const isCatOnly = type === 'cat';
             </button>
             <button
               id="recalculate-btn"
-              class="flex-1 flex items-center justify-center gap-2 body-sm-strong rounded-pill h-10 bg-primary text-on-primary hover:opacity-90 transition-all cursor-pointer"
+              class="flex-1 flex items-center justify-center gap-2 font-semibold text-base rounded-pill min-h-[52px] sm:min-h-[48px] bg-primary text-on-primary hover:opacity-90 transition-all cursor-pointer"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M2 8a6 6 0 0111.46-2.46" />
@@ -695,7 +695,7 @@ const isCatOnly = type === 'cat';
         resultFactEl.style.opacity = '1';
         resultFactEl.style.transform = 'translateY(0)';
       }, 500); // Wait for fade out
-    }, 5000);
+    }, 3000);
   }
 
   function stopFacts() {
